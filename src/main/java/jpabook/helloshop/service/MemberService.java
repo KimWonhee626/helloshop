@@ -17,7 +17,7 @@ public class MemberService {
 
     private final MemberRepository memberRepository;
 
-    // ===회원 가입===
+    //==회원 가입==//
     @Transactional
     public Long join(Member member){
         validateDuplicateMember(member);
@@ -34,12 +34,12 @@ public class MemberService {
         }
     }
 
-    // ===회원 전체 조회===
+    //==회원 전체 조회==//
     public List<Member> findAllMember(){
         return memberRepository.findAll();
     }
 
-    // ===회원 한건 조회===
+    //==회원 한건 조회==//
     public Member findOne(Long memberId){
         return memberRepository.findOne(memberId);
     }

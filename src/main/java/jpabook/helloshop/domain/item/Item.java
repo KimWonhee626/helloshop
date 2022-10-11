@@ -1,10 +1,9 @@
 package jpabook.helloshop.domain.item;
 
 import jpabook.helloshop.domain.Category;
-import jpabook.helloshop.exception.NotEnoughStockExeption;
+import jpabook.helloshop.exception.NotEnoughStockException;
 import lombok.Getter;
 import lombok.Setter;
-import org.apache.catalina.LifecycleState;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -26,7 +25,7 @@ public abstract class Item {
     @ManyToMany(mappedBy = "items")
     private List<Category> categories = new ArrayList<>();
 
-    // ==비즈니스 로직==
+    //==비즈니스 로직==//
 
     // stock 증가
     public void addStock(int quantity){
@@ -37,7 +36,7 @@ public abstract class Item {
     public void removeStock(int quantity){
         int restStock = this.stockQuantity - quantity;
         if(restStock < 0){
-            throw new NotEnoughStockExeption("need more stock");
+            throw new NotEnoughStockException("need more stock");
         }
         this.stockQuantity = restStock;
     }
